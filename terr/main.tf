@@ -9,8 +9,8 @@ terraform {
   required_version = ">=0.14.9"
   
    backend "s3" {
-       bucket = "[Remote_State_S3_Bucket_Name]"
-       key    = "[Remote_State_S3_Bucket_Key]"
+       bucket = "ajeet-backend-1"
+       key    = "backend1"
        region = "east-us-1"
    }
 
@@ -21,7 +21,7 @@ provider "aws" {
   region  = "east-us-1"
 }
 resource "aws_s3_bucket" "s3Bucket" {
-     bucket = "[BUCKET_NAME_HERE]"
+     bucket = "ajeet-bucket123"
      acl       = "public-read"
 
      policy  = <<EOF
@@ -34,7 +34,7 @@ resource "aws_s3_bucket" "s3Bucket" {
              "s3:GetObject"
           ],
          "effect" : "Allow",
-         "resource" : "arn:aws:s3:::[BUCKET_NAME_HERE]/*",
+         "resource" : "arn:aws:s3:::ajeet-bucket123/*",
          "principal" : "*"
       }
     ]
